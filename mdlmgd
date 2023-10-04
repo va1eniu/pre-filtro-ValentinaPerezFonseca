@@ -1,0 +1,75 @@
+eres un ingeniero de software y yo soy el cliente necesito que con query directa me obtenga todos los coches de el inventario, me edite, pueda agregar , dame el codigo con todos estos endpoints funcionales,  IMPORTANTE RECORDAR QUE NO DEBE TENER ESQUEMA DE MODELO OMITELO esta es mi coleccion de la base de datos "test" llamada "Inventario"
+
+_id
+6511cf3c9ff7d0937d40c587
+coche
+"Ferrari 488 GTB"
+cantidad
+5,  tomando como referencia esta estructura de routes realiza la de coches con los parametros dados router.get('/paciente-mayor-gasto-2023', async (req, res) => {
+  try {
+    const client = new MongoClient(bases);
+    await client.connect();
+    const db = client.db('farmaciaCampus');
+    const ventasCollection = db.collection('Ventas'); // Cambia el nombre de la colección a 'Ventas'
+
+    // Definir las fechas de inicio y fin de 2023
+    const fechaInicio2023 = new Date('2023-01-01T00:00:00.000+00:00');
+    const fechaFin2023 = new Date('2023-12-31T23:59:59.999+00:00');
+
+    // Agregar un campo 'paciente.nombre' como clave y sumar el gasto total por paciente
+    const pipeline = [
+      {
+        $match: {
+          fechaVenta: {
+            $gte: fechaInicio2023,
+            $lte: fechaFin2023
+          }
+        }
+      },
+      {
+        $unwind: '$medicamentosVendidos'
+      },
+      {
+        $group: {
+          _id: '$paciente.nombre',
+          gastoTotal: { $sum: { $multiply: ['$medicamentosVendidos.cantidadVendida', '$medicamentosVendidos.precio'] } }
+        }
+      },
+      {
+        $sort: {
+          gastoTotal: -1 // Ordenar en orden descendente por gasto total
+        }
+      },
+      {
+        $limit: 1 // Obtener solo el paciente con el gasto más alto
+      }
+    ];
+
+    const result = await ventasCollection.aggregate(pipeline).toArray();
+
+    client.close();
+
+    if (result.length > 0) {
+      res.json(result[0]);
+    } else {
+      res.status(404).json('No se encontraron pacientes en 2023');
+    }
+  } catch (error) {
+    res.status(404).json('No se encontraron pacientes en 2023');
+  }
+});
+y en el Server.js debe aparecer este tipo de estructura: const express = require('express');
+const router = express.Router()
+const app = express();
+
+require('dotenv').config();
+const port = process.env.PORT;
+
+const routerBase = require('./routes/routes.js')
+app.use('/usuarios', routerBase)
+
+app.use(express.json());
+
+app.listen(port,()=>{
+    console.log('Esta corriendo en el puerto:8000');
+})   el puerto debe estar en el index.js y las variables globales dentro de variables de entorno, no debe manejar modelo solo guiate de la coleccion, dame estructurado el index y routes con el archivo nombrado Inventario.js que funcionen correctamente en conjunto. dame todo el archivo correcto y funcionando, dame el codigo para probar todos los endpoints en postman  y correr el servidor. dame todas las dependencias a instalar en un mismo codigo

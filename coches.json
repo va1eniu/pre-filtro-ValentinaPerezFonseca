@@ -1,0 +1,98 @@
+{
+    "Luxury Ferrari": [
+      {
+        "modelo": "Ferrari 488 GTB",
+        "año": 2023,
+        "precio": 300000,
+        "motor": {
+          "tipo": "V8",
+          "cilindrada": 3902,
+          "potencia": 670
+        },
+        "coloresDisponibles": ["Rojo", "Amarillo", "Negro", "Blanco"]
+      },
+      {
+        "modelo": "Ferrari Portofino",
+        "año": 2023,
+        "precio": 215000,
+        "motor": {
+          "tipo": "V8",
+          "cilindrada": 3855,
+          "potencia": 620
+        },
+        "coloresDisponibles": ["Rojo", "Azul", "Gris"]
+      }
+    ],
+    "Componentes": [
+      {
+        "nombre": "Freno de cerámica",
+        "tipo": "Freno",
+        "descripcion": "Frenos de cerámica de alto rendimiento",
+        "precio": 15000
+      },
+      {
+        "nombre": "Asientos deportivos de cuero",
+        "tipo": "Asiento",
+        "descripcion": "Asientos deportivos de cuero de lujo",
+        "precio": 8000
+      }
+    ],
+    "ComprasComponentes": [
+      {
+        "fechaCompra": "2023-01-05T00:00:00Z",
+        "proveedor": "ProveedorX",
+        "componentesComprados": [
+          {
+            "nombreComponente": "Freno de cerámica",
+            "cantidadComprada": 20,
+            "precioCompra": 12000
+          },
+          {
+            "nombreComponente": "Asientos deportivos de cuero",
+            "cantidadComprada": 10,
+            "precioCompra": 7000
+          }
+        ]
+      }
+    ],
+    "Clientes": [
+      {
+        "nombre": "Cliente1",
+        "correo": "cliente1@example.com",
+        "telefono": "555-1234"
+      },
+      {
+        "nombre": "Cliente2",
+        "correo": "cliente2@example.com",
+        "telefono": "555-5678"
+      }
+    ],
+    "ComprasClientes": [
+      {
+        "cliente": "Cliente1",
+        "compras": [
+          {
+            "coche": "Ferrari 488 GTB",
+            "fechaCompra": "2023-01-15T00:00:00Z",
+            "precioCompra": 300000
+          },
+          {
+            "componente": "Freno de cerámica",
+            "fechaCompra": "2023-02-10T00:00:00Z",
+            "precioCompra": 15000
+          }
+        ]
+      },
+      {
+        "cliente": "Cliente2",
+        "compras": [
+          {
+            "coche": "Ferrari Portofino",
+            "fechaCompra": "2023-03-20T00:00:00Z",
+            "precioCompra": 215000
+          }
+        ]
+      }
+    ]
+  }
+  
