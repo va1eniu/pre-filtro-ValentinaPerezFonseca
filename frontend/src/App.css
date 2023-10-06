@@ -1,0 +1,93 @@
+body{
+  padding: 0%;
+  margin: 0;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.navbar {
+  background: linear-gradient(90deg, black, red);
+  background-size: 200% 100%;
+  animation: gradientAnimation 5s infinite alternate;
+}
+
+.logoo{
+  text-align: center;
+}
+
+img{
+  height: 4rem;
+  width: 3.5rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  align-items: center;
+ 
+}
+
+.navbar a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+
+  
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* styles.css */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  width: 300px; /* Ancho fijo de la tarjeta */
+  min-height: 200px; /* Altura mínima para asegurar que el contenido se ajuste armoniosamente */
+  background-color: red;
+  color: black;
+  margin-bottom: 20px;
+  overflow: hidden; /* Oculta el contenido que se desborde */
+}
+
+.card-content {
+  padding: 10px; /* Añade un espacio interno al contenido de la tarjeta */
+}
+
+
+.card {
+  border: 0.5px solid white;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  padding: 1rem 1rem;
+}
+
+button{
+  padding: 0.5rem 0.5rem;
+  background-color: yellow;
+  color: rgb(0, 0, 0);
+  border-radius: 0.5rem;
+}
+
+input{
+  background-color: rgba(255, 0, 0, 0);
+  color: white;
+  border-radius: 0.5rem;
+}
+
+form{
+  display: flex;
+  justify-content: space-around;
+}
+
+
