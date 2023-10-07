@@ -37,6 +37,7 @@ class Server {
   }
 
   routes() {
+    console.log('ayudaaa');
     this.app.use(this.paths.clientPath, RouterClient);
     this.app.use(this.paths.cochesPath, RouterCoches);
     this.app.use(this.paths.compoPath, RouterCompo);

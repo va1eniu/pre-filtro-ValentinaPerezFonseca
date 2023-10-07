@@ -8,7 +8,7 @@ import ComprasComponentes from './components/comprasComponentes/comprasComponent
  import Inventario from './components/ineventario/inventario.js';
 import { BrowserRouter as Router, Routes, Route, Link,  } from 'react-router-dom';
 
-// Importa el logo
+
 import logo from './logo.png';
 
 function App() {
