@@ -1,0 +1,639 @@
+openapi: 3.0.3
+info:
+  title: Luxury Ferrari
+  description: Una simulación de un sistema de administración y gestión de la marca Ferrari
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+tags:
+  - name: clientes
+  - name: coches
+  - name: componentes
+  - name: comprasComponentes
+  - name: inventario
+
+paths:
+  /Clientes:
+    get:
+      tags:
+        - clientes
+      summary: Muestra la lista de clientes y el inventario ingresado
+      responses:
+        200:
+          description: (OK) Lista de clientes obtenida con éxito
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    post:
+      tags:
+        - clientes
+      summary: Inserta la información de un nuevo cliente en la base de datos.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/clientePost"
+      responses:
+        200:
+          description: (OK) La información se guardó correctamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    patch:
+      tags:
+        - clientes
+      summary: Actualiza la información en la base de datos del cliente especificado
+      parameters:
+        - name: idCliente
+          in: path
+          description: Actualiza la información de la colección clientes
+          required: true
+          schema:
+            type: string
+            format: objectId
+            example: 605c4d36a2cfde067c6c2660
+            minLength: 24
+            maxLength: 24
+      requestBody:
+        description: Añade los datos de los siguientes campos a modificar
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/clientePost"
+      responses:
+        200:
+          description: (OK) La información se guardó correctamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    delete:
+      tags:
+        - clientes
+      summary: Elimina el cliente de la base de datos
+      parameters:
+        - name: idCliente
+          in: path
+          description: Se elimina el cliente de la base de datos.
+          required: true
+          schema:
+            type: string
+            format: objectId
+            example: 605c4d36a2cfde067c6c266d
+            minLength: 24
+            maxLength: 24
+
+      responses:
+        200:
+          description: (OK) El cliente fue borrado exitosamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  /coches:
+    get:
+      tags:
+        - coches
+      summary: Muestra la lista de coches disponibles
+      responses:
+        200:
+          description: (OK) Lista de coches obtenida con éxito
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    post:
+      tags:
+        - coches
+      summary: Inserta la información de un nuevo coche.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/cochesPost"
+      responses:
+        200:
+          description: (OK) La información se guardó correctamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    patch:
+      tags:
+        - coches
+      summary: Actualiza la información en la base de datos del coche especificado
+      parameters:
+        - name: idcoches
+          in: path
+          description: Actualiza la información de la base de datos
+          required: true
+          schema:
+            type: string
+            format: objectId
+            example: 605c4d36a2cfde067c6c266d
+            minLength: 24
+            maxLength: 24
+      requestBody:
+        description: Añade los datos de los siguientes campos a modificar
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/cochesPost"
+      responses:
+        200:
+          description: (OK) La información se guardó correctamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    delete:
+      tags:
+        - coches
+      summary: Elimina el coche de la base de datos
+      parameters:
+        - name: idDesarrollador
+          in: path
+          description: Se elimina el coche de la base de datos.
+          required: true
+          schema:
+            type: string
+            format: objectId
+            example: 605c4d36a2cfde067c6c266d
+            minLength: 24
+            maxLength: 24
+
+      responses:
+        200:
+          description: (OK) El coche fue borrado exitosamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  /componentes:
+    get:
+      tags:
+        - componentes
+      summary: Muestra la lista de componentes disponibles
+      responses:
+        200:
+          description: (OK) Lista de componentes obtenida con éxito
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    post:
+      tags:
+        - componentes
+      summary: Inserta la información de un nuevo componente.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/componentesPost"
+      responses:
+        200:
+          description: (OK) La información se guardó correctamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    patch:
+      tags:
+        - componentes
+      summary: Actualiza la información en la base de datos del componente especificado
+      parameters:
+        - name: idcomponentes
+          in: path
+          description: Actualiza la información del respectivo componente
+          required: true
+          schema:
+            type: string
+            format: objectId
+            example: 605c4d36a2cfde067c6c266d
+            minLength: 24
+            maxLength: 24
+      requestBody:
+        description: Añade los datos de los siguientes campos a modificar
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/componentesPost"
+      responses:
+        200:
+          description: (OK) La información se guardó correctamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    delete:
+      tags:
+        - componentes
+      summary: Elimina el componente de la base de datos
+      parameters:
+        - name: idcomponentes
+          in: path
+          description: Se elimina el componente de la base de datos.
+          required: true
+          schema:
+            type: string
+            format: objectId
+            example: 605c4d36a2cfde067c6c266d
+            minLength: 24
+            maxLength: 24
+
+      responses:
+        200:
+          description: (OK) El componente fue borrado exitosamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  /ComprasComponentes:
+    get:
+      tags:
+        - comprasComponentes
+      summary: Muestra la lista de componentes comprados registrados
+      responses:
+        200:
+          description: (OK) Lista de compras de componentes obtenida con éxito
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    post:
+      tags:
+        - comprasComponentes
+      summary: Inserta la información de un nuevo componente comprado.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/comprasComponentesPost"
+      responses:
+        200:
+          description: (OK) La información se guardó correctamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    patch:
+      tags:
+        - comprasComponentes
+      summary: Actualiza la información en la base de datos del componente comprado especificado
+      parameters:
+        - name: idcomprasComponentes
+          in: path
+          description: Actualiza la información del componente comprado
+          required: true
+          schema:
+            type: string
+            format: objectId
+            example: 605c4d36a2cfde067c6c266d
+            minLength: 24
+            maxLength: 24
+      requestBody:
+        description: Añade los datos de los siguientes campos a modificar
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/comprasComponentesPost"
+      responses:
+        200:
+          description: (OK) La información se guardó correctamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    delete:
+      tags:
+        - comprasComponentes
+      summary: Elimina el componente comprado de la base de datos
+      parameters:
+        - name: idcomprasComponentes
+          in: path
+          description: Se elimina el componente comprado de la base de datos
+          required: true
+          schema:
+            type: string
+            format: objectId
+            example: 605c4d36a2cfde067c6c266d
+            minLength: 24
+            maxLength: 24
+
+      responses:
+        200:
+          description: (OK) El componente comprado fue borrado exitosamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  /inventario:
+    get:
+      tags:
+        - inventario
+      summary: Renderiza las cosas disponibles en inventario
+      responses:
+        200:
+          description: (OK) Lista de inventario obtenida con éxito
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    post:
+      tags:
+        - inventario
+      summary: Inserta un nuevo objeto en inventario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/inventarioPost"
+      responses:
+        200:
+          description: (OK) La información se guardó correctamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    patch:
+      tags:
+        - inventario
+      summary: Actualiza la información en la base de datos del objeto de inventario especificado
+      parameters:
+        - name: idUsuario
+          in: path
+          description: Actualiza la información del respectivo Usuario
+          required: true
+          schema:
+            type: string
+            format: objectId
+            example: 605c4d36a2cfde067c6c266d
+            minLength: 24
+            maxLength: 24
+      requestBody:
+        description: Añade los datos de los siguientes campos a modificar
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/inventarioPost"
+      responses:
+        200:
+          description: (OK) La información se guardó correctamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+    delete:
+      tags:
+        - inventario
+      summary: Elimina el objeto de inventario de la base de datos
+      parameters:
+        - name: idUsuario
+          in: path
+          description: Se elimina el objeto de inventario de la base de datos
+          required: true
+          schema:
+            type: string
+            format: objectId
+            example: 605c4d36a2cfde067c6c266d
+            minLength: 24
+            maxLength: 24
+
+      responses:
+        200:
+          description: (OK) El objeto de inventario fue eliminado exitosamente
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+components:
+  responses:
+    NotFound:
+      description: (NotFound) No se encontró la información
+    BadRequest:
+      description: (BadRequest) Los datos enviados son incorrectos o faltan datos obligatorios
+    ServerError:
+      description: Error en el servidor
+
+  schemas:
+    clientePost:
+      type: object
+      properties:
+        nombre:
+          type: string
+          format: objectId
+          example: 605c4d36a2cfde067c6c266d
+        correo:
+          type: string
+          format: objectId
+          example: 605c4d36a2cfde067c6c266d
+        telefono:
+          type: string
+          format: date
+          example: 1990-01-01
+      required:
+        - nombre
+        - correo
+        - telefono
+      example:
+        nombre: "65200f67e53e5c7b9f897ec6"
+        correo: "651ef14d53458e9228c882ba"
+        telefono: "1990-01-01"
+
+    cochesPost:
+      type: object
+      properties:
+        nombre:
+          type: string
+          uniqueItems: true
+          example: Marcus Holloway
+        año:
+          type: string
+          example: Liechtenstein
+        precio:
+          type: boolean
+          default: true
+      required:
+        - nombre
+        - año
+        - precio
+      example:
+        nombre: "Marcus Holloway"
+        año: "Liechtenstein"
+        precio: true
+
+    componentesPost:
+      type: object
+      properties:
+        _id:
+          type: string
+        nombre:
+          type: string
+        tipo:
+          type: string
+        descripcion:
+          type: string
+        precio:
+          type: number
+      required:
+        - _id
+        - nombre
+        - tipo
+        - descripcion
+        - precio
+      example:
+        _id: "6511cf3b9ff7d0937d40c583"
+        nombre: "Asientos deportivos de cuero"
+        tipo: "Asiento"
+        descripcion: "Asientos deportivos de cuero de lujo"
+        precio: 8000
+
+    comprasComponentesPost:
+      type: object
+      properties:
+        _id:
+          type: string
+        fechaCompra:
+          type: string
+          format: date-time
+        proveedor:
+          type: string
+        componentesComprados:
+          type: array
+          items:
+            type: object
+            properties:
+              nombreComponente:
+                type: string
+              cantidadComprada:
+                type: integer
+              precioCompra:
+                type: number
+              _id:
+                type: string
+          example:
+            - nombreComponente: "Freno de cerámica"
+              cantidadComprada: 20
+              precioCompra: 12000
+              _id: "65202cc44035bfe799883a79"
+            - nombreComponente: "Asientos deportivos de cuero"
+              cantidadComprada: 10
+              precioCompra: 7000
+              _id: "65202cc44035bfe799883a7a"
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        __v:
+          type: integer
+      required:
+        - _id
+        - fechaCompra
+        - proveedor
+        - componentesComprados
+        - createdAt
+        - updatedAt
+        - __v
+      example:
+        _id: "65202cc44035bfe799883a78"
+        fechaCompra: "2023-01-05T00:00:00.000+00:00"
+        proveedor: "ProveedorX"
+        componentesComprados:
+          - nombreComponente: "Freno de cerámica"
+            cantidadComprada: 20
+            precioCompra: 12000
+            _id: "65202cc44035bfe799883a79"
+          - nombreComponente: "Asientos deportivos de cuero"
+            cantidadComprada: 10
+            precioCompra: 7000
+            _id: "65202cc44035bfe799883a7a"
+        createdAt: "2023-10-06T15:50:28.843+00:00"
+        updatedAt: "2023-10-06T15:50:28.843+00:00"
+        __v: 0
+
+    inventarioPost:
+      type: object
+      properties:
+        _id:
+          type: string
+        componente:
+          type: string
+        cantidad:
+          type: integer
+      required:
+        - _id
+        - componente
+        - cantidad
+      example:
+        _id: "6511cf3c9ff7d0937d40c58a"
+        componente: "Asientos deportivos de cuero"
+        cantidad: 30

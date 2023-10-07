@@ -1,0 +1,158 @@
+
+  
+  /* Encabezado */
+  .header {
+    background-color: #c00;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header h1 {
+    font-size: 36px;
+    margin: 0;
+    animation: colorTransition 3s linear infinite; /* Agregar la transición de color */
+  }
+  
+  .header img {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  /* Navegación */
+  .navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    animation: colorTransition 3s linear infinite; /* Agregar la transición de color */
+  }
+  
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar li {
+    margin: 0 20px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Sección de noticias */
+  .news-section {
+    padding: 20px;
+    margin-bottom: 20px;
+ 
+    animation: colorTransition 3s linear infinite; /* Agregar la transición de color al fondo */
+  }
+  
+  .news-section h2 {
+    font-size: 24px;
+  }
+  
+  .news-card {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .news-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .news-card h3 {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  
+  /* Sección de productos */
+  .product-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .product-card {
+    background-color: #ffc600;
+    color: #000;
+    padding: 20px;
+    margin: 10px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+  }
+  
+  .product-card img {
+    max-width: 200%;
+    height: 50%;
+  }
+  
+  .product-card h3 {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  
+  /* Pie de página */
+  .footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  /* Transición de color */
+  @keyframes colorTransition {
+    0% {
+      background-color: #000; /* Negro */
+    }
+    50% {
+      background-color: #c00; /* Rojo */
+    }
+    100% {
+      background-color: #000; /* Negro */
+    }
+  }
+  
+  /* Estilos responsive para dispositivos de hasta 600px */
+  @media (max-width: 600px) {
+    .header,
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .navbar ul {
+      margin-top: 10px;
+    }
+  
+    .navbar li {
+      margin: 10px 0;
+    }
+  
+    .product-section {
+      flex-direction: column;
+    }
+  
+    .product-card {
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+  

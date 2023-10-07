@@ -3,10 +3,10 @@ import './App.css';
 import Coches from './components/coches/coches.js';
 import Clientes from './components/clientes/clientes.js';
 import Componentes from './components/componentes/componentes.js';
-
+import HomePage from './components/home/homepage.js';
 import ComprasComponentes from './components/comprasComponentes/comprasComponentes.js';
  import Inventario from './components/ineventario/inventario.js';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link,  } from 'react-router-dom';
 
 // Importa el logo
 import logo from './logo.png';
@@ -14,12 +14,15 @@ import logo from './logo.png';
 function App() {
   return (
     <Router>
+
       <div>
         <nav className="navbar">
         <div className='logoo'>
        <img src={logo} alt="Logo" className="logo" />
        
        </div>
+       
+       <Link to="/home">Home</Link>
           <Link to="/coches">Coches</Link>
           <Link to="/clientes">Clientes</Link>
           <Link to="/componentes">Componentes</Link>
@@ -29,6 +32,7 @@ function App() {
       </div>
       <Routes>
        <Route path="/coches" element={<Coches />} /> 
+       <Route path="/home" element={<HomePage />} /> 
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/componentes" element={<Componentes/>} />
        <Route path="/componentesCompras" element={<ComprasComponentes/>} />
